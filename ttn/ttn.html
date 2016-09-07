@@ -1,8 +1,8 @@
 <script type='text/x-red' data-template-name='ttn'>
 
   <div class='form-row'>
-    <label for='node-input-appEUI'><i class='fa fa-desktop'></i> App EUI</label>
-    <input type='text' id='node-input-appEUI' placeholder='0000000000000000'>
+    <label for='node-input-appId'><i class='fa fa-desktop'></i> App ID</label>
+    <input type='text' id='node-input-appId' placeholder=''>
   </div>
 
   <br/>
@@ -15,8 +15,8 @@
   <br/>
 
   <div class='form-row'>
-    <label for='node-input-broker'><i class='fa fa-key'></i> Broker</label>
-    <input type='text' id='node-input-broker' placeholder=''>
+    <label for='node-input-region'><i class='fa fa-key'></i> Region or Broker</label>
+    <input type='text' id='node-input-region' placeholder='eu'>
   </div>
 
   <br/>
@@ -39,7 +39,7 @@
     category: 'input',
     color:    '#d8c0d7',
     defaults: {
-      appEUI: {
+      appId: {
         value: '',
         type: 'string',
         required: true,
@@ -49,8 +49,8 @@
         type: 'password',
         required: true,
       },
-      broker: {
-        value: 'staging.thethingsnetwork.org',
+      region: {
+        value: '',
         type: 'string',
         required: true,
       },

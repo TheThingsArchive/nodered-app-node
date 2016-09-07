@@ -3,16 +3,16 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config);
 
     var node = this;
-    node.appEUI = config.appEUI;
+    node.appId = config.appId;
     node.accessKey = config.accessKey;
-    node.broker = config.broker;
+    node.region = config.region;
 
-    var ttn = require('ttn')
+    var ttn = require('ttn');
 
-    var client = new ttn.Client(node.broker, node.appEUI, node.accessKey)
+    var client = new ttn.Client(node.region, node.appId, node.accessKey);
 
     client.on('connect', function () {
-      node.log('Connected to TTN application ' + node.appEUI)
+      node.log('Connected to TTN application ' + node.appId);
       node.status({
         fill:  'green',
         shape: 'dot',
@@ -21,32 +21,22 @@ module.exports = function (RED) {
     });
 
     // get a message from a device
-    client.on('uplink', function (msg) {
-      var res = {
-        payload: msg.fields,
-        appEUI: node.appEUI,
-        devEUI: msg.devEUI,
-        metadata: msg.metadata,
-        counter: msg.counter,
-      };
-
+    client.on('message', function (msg) {
+      msg.app_id = node.appId;
       node.send([res, null]);
     });
 
     client.on('activation', function (msg) {
-      var res = {
-        payload: msg.devEUI,
-      };
-      node.send([null, res]);
+      node.send([null, msg]);
     });
 
     client.on('error', function (err) {
-      node.error('Error on connection for TTN application ' + node.appEUI + ': ' + err);
+      node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
       node.status({
         fill:  'red',
         shape: 'dot',
         text:  'error',
-      })
+      });
     });
 
     // clean up
@@ -59,10 +49,10 @@ module.exports = function (RED) {
       });
       client.end();
       done();
-    })
+    });
 
   }
 
   // return TTN();
-   RED.nodes.registerType("ttn", TTN)
-}
+   RED.nodes.registerType("ttn", TTN);
+};
