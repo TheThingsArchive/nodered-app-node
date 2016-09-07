@@ -22,11 +22,12 @@ module.exports = function (RED) {
 
     // get a message from a device
     client.on('message', function (msg) {
-      msg.app_id = node.appId;
-      node.send([res, null]);
+      msg.payload = msg.payload_fields || msg.payload_raw;
+      node.send([msg, null]);
     });
 
     client.on('activation', function (msg) {
+      msg.payload = msg.dev_id;
       node.send([null, msg]);
     });
 
