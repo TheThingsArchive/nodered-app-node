@@ -15,7 +15,7 @@ See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-
 
 You can find the following flow for the [IFTTT Example](https://www.thethingsnetwork.org/docs/node-red/#example-ifttt) found in the [documentation](https://www.thethingsnetwork.org/docs/node-js/) in the  [Node-RED Library](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe):
 
-[![Example](https://www.thethingsnetwork.org/docs/assets/node-red-ifttt-flow.png)](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe)
+[![Example](https://www.thethingsnetwork.org/docs/node-red/node-red-ifttt-flow.png)](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe)
 
 ## Documentation
 
