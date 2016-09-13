@@ -13,10 +13,10 @@ See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-
 
 ## Example
 
-You can find the following flow for the [IFTTT Example](https://www.thethingsnetwork.org/docs/node-red/#example-ifttt) found in the [documentation](https://www.thethingsnetwork.org/docs/node-js/) in the  [Node-RED Library](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe):
+You can find the following flow for the [IFTTT Example](https://www.thethingsnetwork.org/docs/node-red/#example-ifttt) found in the [documentation](https://www.thethingsnetwork.org/docs/node-red/) in the  [Node-RED Library](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe):
 
 [![Example](https://www.thethingsnetwork.org/docs/node-red/node-red-ifttt-flow.png)](http://flows.nodered.org/flow/2d475e136cda21c3d642b0da66e565fe)
 
 ## Documentation
 
-Documentation can be found in [The Things Network Documentation](https://www.thethingsnetwork.org/docs/node-js/).
+Documentation can be found in [The Things Network Documentation](https://www.thethingsnetwork.org/docs/node-red/).
