@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/TheThingsNetwork/node-red-contrib-ttn.git"
+    "url": "git://github.com/TheThingsNetwork/nodered-app-lib.git"
   },
   "bugs": {
-    "url": "https://github.com/TheThingsNetwork/node-red-contrib-ttn/issues"
+    "url": "https://github.com/TheThingsNetwork/nodered-app-lib/issues"
   },
-  "homepage": "https://github.com/TheThingsNetwork/node-red-contrib-ttn#readme",
+  "homepage": "https://github.com/TheThingsNetwork/nodered-app-lib#readme",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
