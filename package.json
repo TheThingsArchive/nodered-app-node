@@ -27,7 +27,8 @@
   "license": "MIT",
   "node-red": {
     "nodes": {
-      "ttn": "ttn/ttn.js"
+      "ttn": "ttn/ttn.js",
+      "ttn downlink": "ttn-downlink/ttn-downlink.js"
     }
   }
 }

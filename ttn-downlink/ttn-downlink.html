@@ -1,0 +1,78 @@
+<script type='text/x-red' data-template-name='ttn downlink'>
+  <div class='form-row'>
+    <label for='node-input-appEUI'><i class='fa fa-desktop'></i> App EUI</label>
+    <input type='text' id='node-input-appEUI' placeholder='0000000000000000'>
+  </div>
+
+  <br/>
+
+  <div class='form-row'>
+    <label for='node-input-devEUI'><i class='fa fa-bicycle'></i> Dev EUI</label>
+    <input type='text' id='node-input-devEUI' placeholder='0000000000000000'>
+  </div>
+
+  <br />
+
+  <div class='form-row'>
+    <label for='node-input-accessKey'><i class='fa fa-key'></i> Access Key</label>
+    <input type='password' id='node-input-accessKey' placeholder=''>
+  </div>
+
+  <br/>
+
+  <div class='form-row'>
+    <label for='node-input-broker'><i class='fa fa-key'></i> Broker</label>
+    <input type='text' id='node-input-broker' placeholder=''>
+  </div>
+
+  <br/>
+
+  <div class='form-row'>
+    <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+    <input type='text' id='node-input-name' placeholder='Name'>
+  </div>
+</script>
+
+<script type='text/javascript'>
+  RED.nodes.registerType('ttn downlink', {
+    category: 'output',
+    color:    '#d8c0d7',
+    defaults: {
+      appEUI: {
+        value: '',
+        type: 'string',
+        required: true,
+      },
+      devEUI: {
+        value: '',
+        type: 'string',
+        required: true,
+      },
+      accessKey: {
+        value: '',
+        type: 'password',
+        required: true,
+      },
+      broker: {
+        value: 'staging.thethingsnetwork.org',
+        type: 'string',
+        required: true,
+      },
+      name: {
+        value: '',
+        type: 'string',
+        required: false,
+      },
+    },
+    inputs:  1,
+    outputs: 0,
+    icon: 'feed.png',
+    label: function() {
+      return this.name || 'ttn downlink';
+    },
+    labelStyle: function() {
+      return this.name ? 'node_label_italic' : '';
+    },
+  });
+</script>
+
