@@ -43,7 +43,7 @@ module.exports = function (RED) {
     })
 
     this.on('input', function (msg) {
-      client.downlink(node.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || 5, msg.payload.port || 1)
+      client.downlink(node.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || '1h', msg.payload.port || 1)
     })
   }
 
