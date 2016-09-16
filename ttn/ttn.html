@@ -1,26 +1,9 @@
 <script type='text/x-red' data-template-name='ttn'>
-
-  <div class='form-row'>
-    <label for='node-input-appEUI'><i class='fa fa-desktop'></i> App EUI</label>
-    <input type='text' id='node-input-appEUI' placeholder='0000000000000000'>
+  <div class="form-row">
+    <label for="node-input-app"><i class="icon-tag"></i> App</label>
+    <input type="text" id="node-input-app">
   </div>
-
   <br/>
-
-  <div class='form-row'>
-    <label for='node-input-accessKey'><i class='fa fa-key'></i> Access Key</label>
-    <input type='password' id='node-input-accessKey' placeholder=''>
-  </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-input-broker'><i class='fa fa-key'></i> Broker</label>
-    <input type='text' id='node-input-broker' placeholder=''>
-  </div>
-
-  <br/>
-
   <div class='form-row'>
     <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
     <input type='text' id='node-input-name' placeholder='Name'>
@@ -39,19 +22,8 @@
     category: 'input',
     color:    '#d8c0d7',
     defaults: {
-      appEUI: {
-        value: '',
-        type: 'string',
-        required: true,
-      },
-      accessKey: {
-        value: '',
-        type: 'password',
-        required: true,
-      },
-      broker: {
-        value: 'staging.thethingsnetwork.org',
-        type: 'string',
+      app: {
+        type: 'ttn app',
         required: true,
       },
       name: {
@@ -71,3 +43,4 @@
     },
   });
 </script>
+
