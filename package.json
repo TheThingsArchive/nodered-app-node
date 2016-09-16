@@ -28,7 +28,8 @@
   "node-red": {
     "nodes": {
       "ttn-app": "ttn-app/ttn-app.js",
-      "ttn": "ttn/ttn.js"
+      "ttn": "ttn/ttn.js",
+      "ttn-downlink": "ttn-downlink/ttn-downlink.js"
     }
   }
 }

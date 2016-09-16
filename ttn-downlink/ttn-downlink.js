@@ -1,17 +1,22 @@
-
 module.exports = function (RED) {
   function TTNDownlink (config) {
     RED.nodes.createNode(this, config);
 
-    var node = this;
-    node.appEUI = config.appEUI;
-    node.devEUI = config.devEUI;
-    node.accessKey = config.accessKey;
-    node.broker = config.broker;
+    var node = this
 
-    var ttn = require('ttn')
+    node.app = config.app;
+    node.config = RED.nodes.getNode(node.app);
 
-    var client = new ttn.Client(node.broker, node.appEUI, node.accessKey)
+    var client = node.config.client
+    if (!client) {
+      node.error('No app set');
+      node.status({
+        fill:  'red',
+        shape: 'dot',
+        text:  'error',
+      });
+      return
+    }
 
     client.on('connect', function () {
       node.log('Connected to TTN application ' + node.appEUI)
@@ -31,19 +36,8 @@ module.exports = function (RED) {
       })
     });
 
-    this.on('close', function (done) {
-      node.log('closing connection');
-      node.status({
-        fill:  'grey',
-        shape: 'dot',
-        text:  'disconnected',
-      });
-      client.end();
-      done();
-    })
-
     this.on('input', function (msg) {
-      client.downlink(node.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || '1h', msg.payload.port || 1)
+      client.downlink(msg.payload.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || '1h', msg.payload.port || 1)
     })
   }
 
