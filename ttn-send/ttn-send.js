@@ -1,5 +1,5 @@
 module.exports = function (RED) {
-  function TTNDownlink (config) {
+  function TTNSend (config) {
     RED.nodes.createNode(this, config);
 
     var node = this
@@ -41,5 +41,5 @@ module.exports = function (RED) {
     })
   }
 
-  RED.nodes.registerType("ttn downlink", TTNDownlink)
+  RED.nodes.registerType("ttn send", TTNSend)
 }
