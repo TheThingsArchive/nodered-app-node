@@ -1,7 +1,5 @@
 module.exports = function (RED) {
-  "use strict";
-
-  function TTN (config) {
+  function TTNSend (config) {
     RED.nodes.createNode(this, config);
 
     var node = this
@@ -29,35 +27,19 @@ module.exports = function (RED) {
       });
     });
 
-    // get a message from a device
-    client.on('uplink', function (msg) {
-      var res = {
-        payload: msg.fields,
-        appEUI: node.appEUI,
-        devEUI: msg.devEUI,
-        metadata: msg.metadata,
-        counter: msg.counter,
-      };
-
-      node.send([res, null]);
-    });
-
-    client.on('activation', function (msg) {
-      var res = {
-        payload: msg.devEUI,
-      };
-      node.send([null, res]);
-    });
-
     client.on('error', function (err) {
       node.error('Error on connection for TTN application ' + node.appEUI + ': ' + err);
       node.status({
         fill:  'red',
         shape: 'dot',
         text:  'error',
-      });
+      })
     });
+
+    this.on('input', function (msg) {
+      client.downlink(msg.payload.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || '1h', msg.payload.port || 1)
+    })
   }
 
-   RED.nodes.registerType("ttn", TTN)
+  RED.nodes.registerType("ttn send", TTNSend)
 }
