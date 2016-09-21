@@ -1,26 +1,31 @@
-<script type='text/x-red' data-template-name='ttn'>
+<script type='text/x-red' data-template-name='ttn send'>
   <div class="form-row">
     <label for="node-input-app"><i class="icon-tag"></i> App</label>
     <input type="text" id="node-input-app">
   </div>
   <br/>
-
   <div class='form-row'>
     <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
     <input type='text' id='node-input-name' placeholder='Name'>
   </div>
 </script>
 
-<script type='text/x-red' data-help-name='ttn'>
+<script type='text/x-red' data-help-name='ttn send'>
   <p>
-    This node gets messages for devices of on the specified application on
-    the TTN network.
+    This node sends messages to TTN. Set the payload to:
+    <pre>
+    {
+      payload_raw: new Buffer('0011', 'hex'),
+      devID: 'my-device',
+      port: 1,    // optional
+    }
+    </pre>
   </p>
 </script>
 
 <script type='text/javascript'>
-  RED.nodes.registerType('ttn', {
-    category: 'input',
+  RED.nodes.registerType('ttn send', {
+    category: 'output',
     color:    '#d8c0d7',
     defaults: {
       app: {
@@ -33,11 +38,11 @@
         required: false,
       },
     },
-    inputs:  0,
-    outputs: 2,
+    inputs:  1,
+    outputs: 0,
     icon: 'feed.png',
     label: function() {
-      return this.name || 'ttn';
+      return this.name || 'ttn send';
     },
     labelStyle: function() {
       return this.name ? 'node_label_italic' : '';
