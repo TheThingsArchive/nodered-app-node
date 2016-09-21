@@ -6,11 +6,11 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config);
     var node = this;
 
-    node.appEUI = config.appEUI;
+    node.appID = config.appID;
     node.accessKey = config.accessKey;
-    node.broker = config.broker;
+    node.region = config.region;
 
-    node.client = new ttn.Client(node.broker, node.appEUI, node.accessKey)
+    node.client = new ttn.Client(node.region, node.appID, node.accessKey)
 
     // clean up
     node.on('close', function (done) {
@@ -18,7 +18,6 @@ module.exports = function (RED) {
       node.client.end();
       done();
     })
-
   }
 
   RED.nodes.registerType('ttn app', TTNConfig);

@@ -1,8 +1,8 @@
 
 <script type='text/x-red' data-template-name='ttn app'>
   <div class='form-row'>
-    <label for='node-config-input-appEUI'><i class='fa fa-desktop'></i> App EUI</label>
-    <input type='text' id='node-config-input-appEUI' placeholder='0000000000000000'>
+    <label for='node-config-input-appID'><i class='fa fa-desktop'></i> App ID</label>
+    <input type='text' id='node-config-input-appID' >
   </div>
 
   <br/>
@@ -15,8 +15,8 @@
   <br/>
 
   <div class='form-row'>
-    <label for='node-config-input-broker'><i class='fa fa-key'></i> Broker</label>
-    <input type='text' id='node-config-input-broker' placeholder=''>
+    <label for='node-config-input-region'><i class='fa fa-key'></i> Region or Broker</label>
+    <input type='text' id='node-config-input-region' placeholder=''>
   </div>
 
   <br/>
@@ -32,7 +32,7 @@
   RED.nodes.registerType('ttn app', {
     category: 'config',
     defaults: {
-      appEUI: {
+      appID: {
         value: '',
         type: 'string',
         required: true,
@@ -42,14 +42,14 @@
         type: 'password',
         required: true,
       },
-      broker: {
-        value: 'staging.thethingsnetwork.org',
+      region: {
+        value: 'eu',
         type: 'string',
         required: true,
       },
     },
     label: function() {
-      return this.appEUI || '0000000000000000';
+      return this.appID || 'ttn';
     },
   });
 </script>
