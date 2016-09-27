@@ -2,12 +2,12 @@ module.exports = function (RED) {
   function TTNSend (config) {
     RED.nodes.createNode(this, config);
 
-    var node = this
+    var node = this;
 
     node.app = config.app;
     node.config = RED.nodes.getNode(node.app);
 
-    var client = node.config.client
+    var client = node.config.client;
     if (!client) {
       node.error('No app set');
       node.status({
@@ -15,11 +15,11 @@ module.exports = function (RED) {
         shape: 'dot',
         text:  'error',
       });
-      return
+      return;
     }
 
     client.on('connect', function () {
-      node.log('Connected to TTN application ' + node.appEUI)
+      node.log('Connected to TTN application ' + node.config.appId);
       node.status({
         fill:  'green',
         shape: 'dot',
@@ -28,18 +28,18 @@ module.exports = function (RED) {
     });
 
     client.on('error', function (err) {
-      node.error('Error on connection for TTN application ' + node.appEUI + ': ' + err);
+      node.error('Error on connection for TTN application ' + node.config.appId + ': ' + err);
       node.status({
         fill:  'red',
         shape: 'dot',
         text:  'error',
-      })
+      });
     });
 
     this.on('input', function (msg) {
-      client.downlink(msg.payload.devID, new Buffer(msg.payload.payload), msg.payload.port || 1)
-    })
+      client.downlink(msg.payload.devId, new Buffer(msg.payload.payload), msg.payload.port || 1);
+    });
   }
 
-  RED.nodes.registerType("ttn send", TTNSend)
-}
+  RED.nodes.registerType("ttn send", TTNSend);
+};

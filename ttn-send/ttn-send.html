@@ -15,9 +15,11 @@
     This node sends messages to TTN. Set the payload to:
     <pre>
     {
-      payload_raw: new Buffer('0011', 'hex'),
-      devID: 'my-device',
-      port: 1,    // optional
+      payload: new Buffer('0011', 'hex'),
+      // payload: [0x00, 0x11],
+      // payload: { led: true },
+      devId: 'my-uno',
+      // port: 1
     }
     </pre>
   </p>

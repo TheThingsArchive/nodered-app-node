@@ -1,8 +1,8 @@
 
 <script type='text/x-red' data-template-name='ttn app'>
   <div class='form-row'>
-    <label for='node-config-input-appID'><i class='fa fa-desktop'></i> App ID</label>
-    <input type='text' id='node-config-input-appID' >
+    <label for='node-config-input-appId'><i class='fa fa-desktop'></i> App ID</label>
+    <input type='text' id='node-config-input-appId' >
   </div>
 
   <br/>
@@ -32,7 +32,7 @@
   RED.nodes.registerType('ttn app', {
     category: 'config',
     defaults: {
-      appID: {
+      appId: {
         value: '',
         type: 'string',
         required: true,
@@ -49,7 +49,7 @@
       },
     },
     label: function() {
-      return this.appID || 'ttn';
+      return this.appId || 'ttn';
     },
   });
 </script>
