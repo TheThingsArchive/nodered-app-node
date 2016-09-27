@@ -4,7 +4,7 @@
   "description": "The Things Network Node-RED Node",
   "main": "index.js",
   "dependencies": {
-    "ttn": "^2.0.0-0"
+    "ttn": "refactor"
   },
   "repository": {
     "type": "git",
