@@ -7,8 +7,7 @@ module.exports = function (RED) {
     node.app = config.app;
     node.config = RED.nodes.getNode(node.app);
 
-    var client = node.config.client;
-    if (!client) {
+    if (!node.config || !node.config.client) {
       node.error('No app set');
       node.status({
         fill:  'red',
@@ -17,6 +16,8 @@ module.exports = function (RED) {
       });
       return;
     }
+
+    var client = node.config.client;
 
     client.on('connect', function () {
       node.log('Connected to TTN application ' + node.config.appId);
