@@ -1,0 +1,71 @@
+<script type='text/x-red' data-template-name='ttn device'>
+  <div class='form-row'>
+    <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+    <input type='text' id='node-input-name' placeholder='Name'>
+  </div>
+
+  <br/>
+
+  <div class="form-row">
+    <label for="node-input-app"><i class="fa fa-desktop"></i> App</label>
+    <input type="text" id="node-input-app">
+  </div>
+
+  <br/>
+
+  <div class='form-row'>
+    <label for='node-config-input-devId'><i class='fa fa-rss'></i> Device ID</label>
+    <input type='text' id='node-config-input-devId'>
+  </div>
+
+  <br/>
+
+  <div class='form-row'>
+    <label for='node-config-input-event'><i class='fa fa-filter'></i> Event</label>
+    <input type='text' id='node-config-input-event' placeholder='activations'>
+  </div>
+</script>
+
+<script type='text/x-red' data-help-name='ttn device'>
+  <p>
+    This node receives specified events for all or specific devices registered to the specified application on The Things Network.
+  </p>
+</script>
+
+<script type='text/javascript'>
+  RED.nodes.registerType('ttn device', {
+    category: 'input',
+    color:    '#d8c0d7',
+    defaults: {
+      name: {
+        value: '',
+        type: 'string',
+        required: false
+      },
+      app: {
+        type: 'ttn app',
+        required: true
+      },
+      devId: {
+        value: '',
+        type: 'string',
+        required: false
+      },
+      event: {
+        value: '',
+        type: 'string',
+        required: true
+      }
+    },
+    inputs:  0,
+    outputs: 1,
+    icon: 'feed.png',
+    label: function() {
+      return this.name || 'ttn device';
+    },
+    labelStyle: function() {
+      return this.name ? 'node_label_italic' : '';
+    },
+  });
+</script>
+

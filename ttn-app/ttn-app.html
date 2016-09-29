@@ -15,16 +15,14 @@
   <br/>
 
   <div class='form-row'>
-    <label for='node-config-input-region'><i class='fa fa-key'></i> Region or Broker</label>
-    <input type='text' id='node-config-input-region' placeholder=''>
+    <label for='node-config-input-region'><i class='fa fa-globe'></i> Region or Broker</label>
+    <input type='text' id='node-config-input-region' placeholder='eu'>
   </div>
-
-  <br/>
 </script>
 
 <script type='text/x-red' data-help-name='ttn app'>
   <p>
-    Configure your TTN application here.
+    Configure your The Things Network application here.
   </p>
 </script>
 
@@ -43,7 +41,7 @@
         required: true,
       },
       region: {
-        value: 'eu',
+        value: '',
         type: 'string',
         required: true,
       },
