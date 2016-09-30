@@ -6,15 +6,25 @@ module.exports = function(RED) {
     var node = this;
 
     RED.nodes.createNode(node, config);
+
+    node.devId = config.devId;
+    node.port = config.port ? parseInt(config.port, 10) : null;
     
-    var client = initNode(node, config);
+    var client = initNode(RED, node, config);
 
     if (!client) {
       return;
     }
 
     this.on('input', function(msg) {
-      client.downlink(msg.payload.devId, new Buffer(msg.payload.payload), msg.payload.port || 1);
+      var devId = msg.devId || node.devId;
+
+      if (!devId) {
+        node.error('No devId set');
+        return;
+      }
+
+      client.send(msg.devId || node.devId, msg.payload, msg.port || node.port);
     });
   }
 

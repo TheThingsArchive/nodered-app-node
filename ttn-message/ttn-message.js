@@ -10,16 +10,17 @@ module.exports = function(RED) {
     node.devId = config.devId;
     node.field = config.field;
 
-    var client = initNode(node, config);
+    var client = initNode(RED, node, config);
 
     if (!client) {
       return;
     }
 
     client.on('message', node.devId, node.field, function(devId, data) {
-      data.devId = devId;
-      data.payload = data.payload_fields || data.payload_raw;
-      node.send([data]);
+      var msg = node.field ? {} : data;
+      msg.devId = devId;
+      msg.payload = node.field ? data : (data.payload_fields || data.payload_raw);
+      node.send([msg]);
     });
   }
 

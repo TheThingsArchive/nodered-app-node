@@ -1,41 +1,36 @@
-<script type='text/x-red' data-template-name='ttn device'>
-  <div class='form-row'>
-    <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
-    <input type='text' id='node-input-name' placeholder='Name'>
+<script type="text/x-red" data-template-name="ttn device">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
   </div>
-
-  <br/>
-
   <div class="form-row">
     <label for="node-input-app"><i class="fa fa-desktop"></i> App</label>
     <input type="text" id="node-input-app">
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-devId'><i class='fa fa-rss'></i> Device ID</label>
-    <input type='text' id='node-config-input-devId'>
+  <div class="form-row">
+    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-devId">
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-event'><i class='fa fa-filter'></i> Event</label>
-    <input type='text' id='node-config-input-event' placeholder='activations'>
+  <div class="form-row">
+    <label for="node-input-event"><i class="fa fa-filter"></i> Event</label>
+    <input type="text" id="node-input-event" placeholder="activations">
   </div>
 </script>
 
-<script type='text/x-red' data-help-name='ttn device'>
-  <p>
-    This node receives specified events for all or specific devices registered to the specified application on The Things Network.
-  </p>
+<script type="text/x-red" data-help-name="ttn device">
+  <p>A node to receive events from devices on The Things Network.</p>
+  <p>The application and event must be configured in the node. A device ID to filter on can also be configured.</p>
+  <p>The output message:</p>
+  <ul>
+    <li><code>devId</code>, the ID of the device that sent the message.</li>
+    <li><code>payload</code>, the original <a href="https://www.thethingsnetwork.org/docs/mqtt/#api-reference" target="_blank">MQTT events topic</a>.</li>
+  </ul>
 </script>
 
-<script type='text/javascript'>
+<script type="text/javascript">
   RED.nodes.registerType('ttn device', {
     category: 'input',
-    color:    '#d8c0d7',
+    color: '#B7E2FD',
     defaults: {
       name: {
         value: '',
@@ -59,7 +54,7 @@
     },
     inputs:  0,
     outputs: 1,
-    icon: 'feed.png',
+    icon: 'ttn.png',
     label: function() {
       return this.name || 'ttn device';
     },

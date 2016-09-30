@@ -1,41 +1,37 @@
-<script type='text/x-red' data-template-name='ttn message'>
-  <div class='form-row'>
-    <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
-    <input type='text' id='node-input-name' placeholder='Name'>
+<script type="text/x-red" data-template-name="ttn message">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
   </div>
-
-  <br/>
-
   <div class="form-row">
     <label for="node-input-app"><i class="fa fa-desktop"></i> App</label>
     <input type="text" id="node-input-app">
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-devId'><i class='fa fa-rss'></i> Device ID</label>
-    <input type='text' id='node-config-input-devId'>
+  <div class="form-row">
+    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-devId">
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-field'><i class='fa fa-filter'></i> Field</label>
-    <input type='text' id='node-config-input-field'>
+  <div class="form-row">
+    <label for="node-input-field"><i class="fa fa-filter"></i> Field</label>
+    <input type="text" id="node-input-field">
   </div>
 </script>
 
-<script type='text/x-red' data-help-name='ttn message'>
-  <p>
-    This node receives (specific fields of) messages for all or specific devices registered to the specified application on The Things Network.
-  </p>
+<script type="text/x-red" data-help-name="ttn message">
+  <p>A node to receive messages from devices on The Things Network.</p>
+  <p>The application must be configured in the node. A device ID and field to filter on can also be configured.</p>
+  <p>The output message:</p>
+  <ul>
+    <li><code>devId</code>, the ID of the device that sent the message.</li>
+    <li><code>payload</code>, an object of fields or the specified field if the application is configured with a decoder payload function, or a <a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a> if it is not.</li>
+    <li>Unless a field was specified, the message is extended with the original <a href="https://www.thethingsnetwork.org/docs/mqtt/#api-reference" target="_blank">MQTT up topic</a>.</li>
+  </ul>
 </script>
 
-<script type='text/javascript'>
+<script type="text/javascript">
   RED.nodes.registerType('ttn message', {
     category: 'input',
-    color:    '#d8c0d7',
+    color: '#B7E2FD',
     defaults: {
       name: {
         value: '',
@@ -59,7 +55,7 @@
     },
     inputs:  0,
     outputs: 1,
-    icon: 'feed.png',
+    icon: 'ttn.png',
     label: function() {
       return this.name || 'ttn message';
     },

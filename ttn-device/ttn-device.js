@@ -15,13 +15,13 @@ module.exports = function(RED) {
       return;
     }
 
-    var client = initNode(node, config);
+    var client = initNode(RED, node, config);
 
     if (!client) {
       return;
     }
 
-    client.on('device', devId, event, function(devId, data) {
+    client.on('device', node.devId, node.event, function(devId, data) {
       node.send([{
         devId: devId,
         payload: data

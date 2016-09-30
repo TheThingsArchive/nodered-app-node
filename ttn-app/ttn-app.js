@@ -19,11 +19,11 @@ module.exports = function(RED) {
 
     node.client = new ttn.Client(node.region, node.appId, node.accessKey);
 
-    client.on('connect', function() {
+    node.client.on('connect', function() {
       node.log('Connected to TTN application ' + node.appId);
     });
 
-    client.on('error', function(err) {
+    node.client.on('error', function(err) {
       node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
     });
 
