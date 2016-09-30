@@ -24,7 +24,7 @@ module.exports = function(RED) {
         return;
       }
 
-      client.send(msg.devId || node.devId, msg.payload, msg.port || node.port);
+      client.send(devId, msg.payload, msg.port || node.port);
     });
   }
 
