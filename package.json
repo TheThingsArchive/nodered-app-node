@@ -29,7 +29,8 @@
   "node-red": {
     "nodes": {
       "ttn-app": "ttn-app/ttn-app.js",
-      "ttn-message": "ttn/ttn.js",
+      "ttn-device": "ttn-device/ttn-device.js",
+      "ttn-message": "ttn-message/ttn-message.js",
       "ttn-send": "ttn-send/ttn-send.js"
     }
   }

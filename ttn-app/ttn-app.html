@@ -1,34 +1,25 @@
-
-<script type='text/x-red' data-template-name='ttn app'>
-  <div class='form-row'>
-    <label for='node-config-input-appId'><i class='fa fa-desktop'></i> App ID</label>
-    <input type='text' id='node-config-input-appId' >
+<script type="text/x-red" data-template-name="ttn app">
+  <div class="form-row">
+    <label for="node-config-input-appId"><i class="fa fa-desktop"></i> App ID</label>
+    <input type="text" id="node-config-input-appId" >
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-accessKey'><i class='fa fa-key'></i> Access Key</label>
-    <input type='password' id='node-config-input-accessKey' placeholder=''>
+  <div class="form-row">
+    <label for="node-config-input-accessKey"><i class="fa fa-key"></i> Access Key</label>
+    <input type="password" id="node-config-input-accessKey" placeholder="">
   </div>
-
-  <br/>
-
-  <div class='form-row'>
-    <label for='node-config-input-region'><i class='fa fa-key'></i> Region or Broker</label>
-    <input type='text' id='node-config-input-region' placeholder=''>
+  <div class="form-row">
+    <label for="node-config-input-region"><i class="fa fa-globe"></i> Region or Broker</label>
+    <input type="text" id="node-config-input-region" placeholder="eu">
   </div>
-
-  <br/>
 </script>
 
-<script type='text/x-red' data-help-name='ttn app'>
+<script type="text/x-red" data-help-name="ttn app">
   <p>
-    Configure your TTN application here.
+    Configure your The Things Network application here.
   </p>
 </script>
 
-<script type='text/javascript'>
+<script type="text/javascript">
   RED.nodes.registerType('ttn app', {
     category: 'config',
     defaults: {
@@ -43,7 +34,7 @@
         required: true,
       },
       region: {
-        value: 'eu',
+        value: '',
         type: 'string',
         required: true,
       },
