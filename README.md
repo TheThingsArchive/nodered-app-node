@@ -14,8 +14,7 @@ See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-
 
 ## Documentation
 
-* [The Things Network Documentation / Arduino](https://www.thethingsnetwork.org/docs/node-red/)
-* [API Reference](API.md)
+* [The Things Network Documentation / Arduino](https://www.thethingsnetwork.org/docs/v2-preview/node-red/)
 
 ## Examples
 
