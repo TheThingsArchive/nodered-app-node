@@ -1,0 +1,66 @@
+<script type="text/x-red" data-template-name="ttn device">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-app"><i class="fa fa-desktop"></i> App</label>
+    <input type="text" id="node-input-app">
+  </div>
+  <div class="form-row">
+    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-devId">
+  </div>
+  <div class="form-row">
+    <label for="node-input-event"><i class="fa fa-filter"></i> Event</label>
+    <input type="text" id="node-input-event" placeholder="activations">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="ttn device">
+  <p>A node to receive events from devices on The Things Network.</p>
+  <p>The application and event must be configured in the node. A device ID to filter on can also be configured.</p>
+  <p>The output message:</p>
+  <ul>
+    <li><code>devId</code>, the ID of the device that sent the message.</li>
+    <li><code>payload</code>, the original <a href="https://www.thethingsnetwork.org/docs/mqtt/#api-reference" target="_blank">MQTT events topic</a>.</li>
+  </ul>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('ttn device', {
+    category: 'input',
+    color: '#B7E2FD',
+    defaults: {
+      name: {
+        value: '',
+        type: 'string',
+        required: false
+      },
+      app: {
+        type: 'ttn app',
+        required: true
+      },
+      devId: {
+        value: '',
+        type: 'string',
+        required: false
+      },
+      event: {
+        value: '',
+        type: 'string',
+        required: true
+      }
+    },
+    inputs:  0,
+    outputs: 1,
+    icon: 'ttn.png',
+    label: function() {
+      return this.name || 'ttn device';
+    },
+    labelStyle: function() {
+      return this.name ? 'node_label_italic' : '';
+    },
+  });
+</script>
+

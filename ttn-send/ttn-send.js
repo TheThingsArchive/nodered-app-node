@@ -1,45 +1,32 @@
-module.exports = function (RED) {
-  function TTNSend (config) {
-    RED.nodes.createNode(this, config);
+var initNode = require('../lib/init');
 
-    var node = this
+module.exports = function(RED) {
 
-    node.app = config.app;
-    node.config = RED.nodes.getNode(node.app);
+  function TTNSend(config) {
+    var node = this;
 
-    var client = node.config.client
+    RED.nodes.createNode(node, config);
+
+    node.devId = config.devId;
+    node.port = config.port ? parseInt(config.port, 10) : null;
+    
+    var client = initNode(RED, node, config);
+
     if (!client) {
-      node.error('No app set');
-      node.status({
-        fill:  'red',
-        shape: 'dot',
-        text:  'error',
-      });
-      return
+      return;
     }
 
-    client.on('connect', function () {
-      node.log('Connected to TTN application ' + node.appEUI)
-      node.status({
-        fill:  'green',
-        shape: 'dot',
-        text:  'connected',
-      });
-    });
+    this.on('input', function(msg) {
+      var devId = msg.devId || node.devId;
 
-    client.on('error', function (err) {
-      node.error('Error on connection for TTN application ' + node.appEUI + ': ' + err);
-      node.status({
-        fill:  'red',
-        shape: 'dot',
-        text:  'error',
-      })
-    });
+      if (!devId) {
+        node.error('No devId set');
+        return;
+      }
 
-    this.on('input', function (msg) {
-      client.downlink(msg.payload.devEUI, new Buffer(msg.payload.payload_raw), msg.payload.ttl || '1h', msg.payload.port || 1)
-    })
+      client.send(devId, msg.payload, msg.port || node.port);
+    });
   }
 
-  RED.nodes.registerType("ttn send", TTNSend)
-}
+  RED.nodes.registerType("ttn send", TTNSend);
+};

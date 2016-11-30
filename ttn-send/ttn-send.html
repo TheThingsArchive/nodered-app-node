@@ -1,53 +1,68 @@
-<script type='text/x-red' data-template-name='ttn send'>
+<script type="text/x-red" data-template-name="ttn send">
   <div class="form-row">
-    <label for="node-input-app"><i class="icon-tag"></i> App</label>
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-app"><i class="fa fa-desktop"></i> App</label>
     <input type="text" id="node-input-app">
   </div>
-  <br/>
-  <div class='form-row'>
-    <label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
-    <input type='text' id='node-input-name' placeholder='Name'>
+  <div class="form-row">
+    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-devId">
+  </div>
+  <div class="form-row">
+    <label for="node-input-port"><i class="fa fa-wrench"></i> Port</label>
+    <input type="text" id="node-input-port">
   </div>
 </script>
 
-<script type='text/x-red' data-help-name='ttn send'>
-  <p>
-    This node sends messages to TTN. Set the payload to:
-    <pre>
-    {
-      payload_raw: new Buffer('0011', 'hex'),
-      devEUI: '00000000B3078A5D',
-      port: 1,    // optional
-      ttl: '1h',  // optional
-    }
-    </pre>
-  </p>
+<script type="text/x-red" data-help-name="ttn send">
+  <p>A node to send a message to a device on The Things Network.</p>
+  <p>The application must be configured in the node. The device ID and port can be configured in the node or set in the incoming message.</p>
+  <p>The input message:</p>
+  <ul>
+    <li><code>devId</code>, if set, is used as the device ID instead of the one configured in the node.</li>
+    <li><code>port</code>, if set, is used as the device port instead of the one configured in the node.</li>
+    <li><code>payload</code> is sent to the device. Must be a <a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a>, <a href="https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array" target="_blank">Array of bytes</a> or an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a> if the application is configured with an encoder payload function.</li>
+  </ul>
 </script>
 
-<script type='text/javascript'>
-  RED.nodes.registerType('ttn send', {
+<script type="text/javascript">
+RED.nodes.registerType('ttn send', {
     category: 'output',
-    color:    '#d8c0d7',
+    color: '#B7E2FD',
     defaults: {
-      app: {
-        type: 'ttn app',
-        required: true,
-      },
       name: {
         value: '',
         type: 'string',
         required: false,
       },
+      app: {
+        type: 'ttn app',
+        required: true,
+      },
+      devId: {
+        value: '',
+        type: 'string',
+        required: false
+      },
+      port: {
+        value: '',
+        type: 'number',
+        required: false
+      }
     },
-    inputs:  1,
+    inputs: 1,
     outputs: 0,
-    icon: 'feed.png',
+    icon: 'ttn.png',
     label: function() {
       return this.name || 'ttn send';
     },
     labelStyle: function() {
       return this.name ? 'node_label_italic' : '';
     },
+    align: 'right'
   });
 </script>
 

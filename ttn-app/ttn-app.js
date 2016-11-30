@@ -1,25 +1,38 @@
-module.exports = function (RED) {
-  "use strict";
-  var ttn = require('ttn');
+var ttn = require('ttn');
 
-  function TTNConfig (config) {
-    RED.nodes.createNode(this, config);
+module.exports = function(RED) {
+  "use strict";
+
+  function TTNConfig(config) {
     var node = this;
 
-    node.appEUI = config.appEUI;
+    RED.nodes.createNode(node, config);
+
+    node.appId = config.appId;
     node.accessKey = config.accessKey;
-    node.broker = config.broker;
+    node.region = config.region;
 
-    node.client = new ttn.Client(node.broker, node.appEUI, node.accessKey)
+    if (!node.appId || !node.accessKey || !node.region) {
+      node.error('No appId, accessKey or region set');
+      return;
+    }
 
-    // clean up
-    node.on('close', function (done) {
-      node.log('closing connection');
+    node.client = new ttn.Client(node.region, node.appId, node.accessKey);
+
+    node.client.on('connect', function() {
+      node.log('Connected to TTN application ' + node.appId);
+    });
+
+    node.client.on('error', function(err) {
+      node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
+    });
+
+    node.on('close', function(done) {
+      node.log('Closing connection to TTN application ' + node.appId);
       node.client.end();
       done();
-    })
-
+    });
   }
 
   RED.nodes.registerType('ttn app', TTNConfig);
-}
+};
