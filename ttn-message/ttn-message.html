@@ -8,8 +8,8 @@
     <input type="text" id="node-input-app">
   </div>
   <div class="form-row">
-    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
-    <input type="text" id="node-input-devId">
+    <label for="node-input-dev_id"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-dev_id">
   </div>
   <div class="form-row">
     <label for="node-input-field"><i class="fa fa-filter"></i> Field</label>
@@ -22,7 +22,7 @@
   <p>The application must be configured in the node. A device ID and field to filter on can also be configured.</p>
   <p>The output message:</p>
   <ul>
-    <li><code>devId</code>, the ID of the device that sent the message.</li>
+    <li><code>dev_id</code>, the ID of the device that sent the message.</li>
     <li><code>payload</code>, an object of fields or the specified field if the application is configured with a decoder payload function, or a <a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a> if it is not.</li>
     <li>Unless a field was specified, the message is extended with the original <a href="https://www.thethingsnetwork.org/docs/mqtt/#api-reference" target="_blank">MQTT up topic</a>.</li>
   </ul>
@@ -42,7 +42,7 @@
         type: 'ttn app',
         required: true
       },
-      devId: {
+      dev_id: {
         value: '',
         type: 'string',
         required: false

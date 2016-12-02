@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
     RED.nodes.createNode(node, config);
 
-    node.devId = config.devId;
+    node.dev_id = config.dev_id;
     node.event = config.event;
 
     if (!node.event) {
@@ -21,9 +21,9 @@ module.exports = function(RED) {
       return;
     }
 
-    client.on('device', node.devId, node.event, function(devId, data) {
+    client.on('device', node.dev_id, node.event, function(dev_id, data) {
       node.send([{
-        devId: devId,
+        dev_id: dev_id,
         payload: data
       }]);
     });

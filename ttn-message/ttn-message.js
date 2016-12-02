@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
     RED.nodes.createNode(node, config);
 
-    node.devId = config.devId;
+    node.dev_id = config.dev_id;
     node.field = config.field;
 
     var client = initNode(RED, node, config);
@@ -16,9 +16,9 @@ module.exports = function(RED) {
       return;
     }
 
-    client.on('message', node.devId, node.field, function(devId, data) {
+    client.on('message', node.dev_id, node.field, function(dev_id, data) {
       var msg = node.field ? {} : data;
-      msg.devId = devId;
+      msg.dev_id = dev_id;
       msg.payload = node.field ? data : (data.payload_fields || data.payload_raw);
       node.send([msg]);
     });

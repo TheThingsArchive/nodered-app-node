@@ -8,8 +8,8 @@
     <input type="text" id="node-input-app">
   </div>
   <div class="form-row">
-    <label for="node-input-devId"><i class="fa fa-rss"></i> Device ID</label>
-    <input type="text" id="node-input-devId">
+    <label for="node-input-dev_id"><i class="fa fa-rss"></i> Device ID</label>
+    <input type="text" id="node-input-dev_id">
   </div>
   <div class="form-row">
     <label for="node-input-event"><i class="fa fa-filter"></i> Event</label>
@@ -22,7 +22,7 @@
   <p>The application and event must be configured in the node. A device ID to filter on can also be configured.</p>
   <p>The output message:</p>
   <ul>
-    <li><code>devId</code>, the ID of the device that sent the message.</li>
+    <li><code>dev_id</code>, the ID of the device that sent the message.</li>
     <li><code>payload</code>, the original <a href="https://www.thethingsnetwork.org/docs/mqtt/#api-reference" target="_blank">MQTT events topic</a>.</li>
   </ul>
 </script>
@@ -41,7 +41,7 @@
         type: 'ttn app',
         required: true
       },
-      devId: {
+      dev_id: {
         value: '',
         type: 'string',
         required: false
