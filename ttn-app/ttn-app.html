@@ -4,12 +4,12 @@
     <input type="text" id="node-config-input-appId" >
   </div>
   <div class="form-row">
-    <label for="node-config-input-accessKey"><i class="fa fa-key"></i> Access Key</label>
-    <input type="password" id="node-config-input-accessKey" placeholder="">
-  </div>
-  <div class="form-row">
     <label for="node-config-input-region"><i class="fa fa-globe"></i> Region or Broker</label>
     <input type="text" id="node-config-input-region" placeholder="eu">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-accessKey"><i class="fa fa-key"></i> Access Key</label>
+    <input type="password" id="node-config-input-accessKey" placeholder="">
   </div>
 </script>
 
@@ -18,8 +18,8 @@
   <p>Use the following information of the application on The Things Network dashboard:</p>
   <ul>
     <li><strong>App ID:</strong> Copy <em>Application ID</em> from the <em>Application Overview</em> box.</li>
-    <li><strong>Access Key:</strong> Scroll down to the <em>Access Keys</em>. For the key you'd like to use, click <code>👁</code> to show the key and then <code>📋</code> to copy it.</li>
-    <li><strong>Region or Broker:</strong> Scroll back up again to <em>Handler Status</em> in the <em>Application Overview</em> box. Only copy the last bit following <code>ttn-handler-</code>.</li>
+    <li><strong>Region or Broker:</strong> Only copy the last bit following <code>ttn-handler-</code> (e.g. <code>eu</code>).</li>
+    <li><strong>Access Key:</strong> Scroll down to the <em>Access Keys</em>. For the key you'd like to use, click <code>📋</code> to copy it.</li>
   </ul>
 </script>
 
@@ -32,16 +32,16 @@
         type: 'string',
         required: true,
       },
-      accessKey: {
-        value: '',
-        type: 'password',
-        required: true,
-      },
       region: {
         value: '',
         type: 'string',
         required: true,
       },
+      accessKey: {
+        value: '',
+        type: 'password',
+        required: true,
+      }
     },
     label: function() {
       return this.appId || 'ttn';
