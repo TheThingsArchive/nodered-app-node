@@ -12,12 +12,14 @@ npm install node-red-contrib-ttn
 
 See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-started/adding-nodes) for more options.
 
+> **NOTE:** For the deprecated staging environment use version 1.0.0: `npm i node-red-contrib-ttn@1.0.0`.
+
 ## Documentation
 
-* [The Things Network Documentation / Arduino](https://www.thethingsnetwork.org/docs/v2-preview/node-red/)
+See [The Things Network Documentation](https://www.thethingsnetwork.org/docs/applications/nodered/).
 
 ## Examples
 
-### [Quick Start](examples/quickstart.flow)
+See [examples/quickstart.flow](examples/quickstart.flow).
 
 [![Quick Start](examples/quickstart.png)](examples/quickstart.flow)
