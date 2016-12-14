@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
     RED.nodes.createNode(node, config);
 
-    node.devId = config.devId;
+    node.dev_id = config.dev_id;
     node.port = config.port ? parseInt(config.port, 10) : null;
     
     var client = initNode(RED, node, config);
@@ -17,14 +17,14 @@ module.exports = function(RED) {
     }
 
     this.on('input', function(msg) {
-      var devId = msg.devId || node.devId;
+      var dev_id = msg.dev_id || node.dev_id;
 
-      if (!devId) {
-        node.error('No devId set');
+      if (!dev_id) {
+        node.error('No dev_id set');
         return;
       }
 
-      client.send(devId, msg.payload, msg.port || node.port);
+      client.send(dev_id, msg.payload, msg.port || node.port);
     });
   }
 
