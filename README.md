@@ -20,6 +20,6 @@ See [The Things Network Documentation](https://www.thethingsnetwork.org/docs/app
 
 ## Examples
 
-See [examples/quickstart.flow](examples/quickstart.flow).
+See [examples/quickstart.json](examples/quickstart.json).
 
-[![Quick Start](examples/quickstart.png)](examples/quickstart.flow)
+[![Quick Start](examples/quickstart.png)](examples/quickstart.json)
