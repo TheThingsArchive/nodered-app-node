@@ -21,11 +21,13 @@ module.exports = function(RED) {
       return;
     }
 
-    client.on('device', node.dev_id, node.event, function(dev_id, data) {
-      node.send([{
-        dev_id: dev_id,
-        payload: data
-      }]);
+    client.then(function (client) {
+      client.on('device', node.dev_id, node.event, function(dev_id, data) {
+        node.send([{
+          dev_id: dev_id,
+          payload: data
+        }]);
+      });
     });
   }
 

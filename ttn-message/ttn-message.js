@@ -16,11 +16,13 @@ module.exports = function(RED) {
       return;
     }
 
-    client.on('message', node.dev_id, node.field, function(dev_id, data) {
-      var msg = node.field ? {} : data;
-      msg.dev_id = dev_id;
-      msg.payload = node.field ? data : (data.payload_fields || data.payload_raw);
-      node.send([msg]);
+    client.then(function (client) {
+      client.on('uplink', node.dev_id, node.field, function(dev_id, data) {
+        var msg = node.field ? {} : data;
+        msg.dev_id = dev_id;
+        msg.payload = node.field ? data : (data.payload_fields || data.payload_raw);
+        node.send([msg]);
+      });
     });
   }
 

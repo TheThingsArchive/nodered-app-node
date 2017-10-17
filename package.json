@@ -4,7 +4,7 @@
   "description": "The Things Network Node-RED Application Nodes",
   "main": "index.js",
   "dependencies": {
-    "ttn": "2.0.x"
+    "ttn": "^2.2.8"
   },
   "repository": {
     "type": "git",
