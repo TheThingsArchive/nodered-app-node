@@ -15,6 +15,14 @@
     <label for="node-input-port"><i class="fa fa-wrench"></i> Port</label>
     <input type="text" id="node-input-port">
   </div>
+  <div class="form-row">
+    <label for="node-input-schedule"><i class="fa fa-wrench"></i> Schedule</label>
+    <select id="node-input-schedule">
+      <option value="replace">replace</option>
+      <option value="first">first</option>
+      <option value="last">last</option>
+    </select>
+  </div>
 </script>
 
 <script type="text/x-red" data-help-name="ttn send">
@@ -29,7 +37,7 @@
 </script>
 
 <script type="text/javascript">
-RED.nodes.registerType('ttn send', {
+  RED.nodes.registerType('ttn send', {
     category: 'output',
     color: '#B7E2FD',
     defaults: {
@@ -51,6 +59,11 @@ RED.nodes.registerType('ttn send', {
         value: '',
         type: 'number',
         required: false
+      },
+      schedule: {
+        value: 'replace',
+        type: 'string',
+        required: true
       }
     },
     inputs: 1,

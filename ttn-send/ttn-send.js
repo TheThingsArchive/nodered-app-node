@@ -9,7 +9,7 @@ module.exports = function(RED) {
 
     node.dev_id = config.dev_id;
     node.port = config.port ? parseInt(config.port, 10) : null;
-    
+
     var client = initNode(RED, node, config);
 
     if (!client) {
@@ -24,7 +24,9 @@ module.exports = function(RED) {
         return;
       }
 
-      client.send(dev_id, msg.payload, msg.port || node.port);
+      client.then(function (client) {
+        client.send(dev_id, msg.payload, msg.port || node.port, msg.confirmed || false, msg.schedule || config.schedule || "replace");
+      })
     });
   }
 
