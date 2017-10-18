@@ -13,7 +13,7 @@
   </div>
   <div class="form-row">
     <label for="node-input-port"><i class="fa fa-wrench"></i> Port</label>
-    <input type="text" id="node-input-port">
+    <input type="number" id="node-input-port" min="0">
   </div>
   <div class="form-row">
     <label for="node-input-confirmed"><i class="fa fa-wrench"></i> Confirmed</label>
@@ -62,7 +62,7 @@
         required: true
       },
       port: {
-        value: '',
+        value: '1',
         type: 'number',
         required: false
       },

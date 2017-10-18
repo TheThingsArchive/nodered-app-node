@@ -8,7 +8,7 @@ module.exports = function(RED) {
     RED.nodes.createNode(node, config);
 
     node.dev_id = config.dev_id;
-    node.port = config.port ? parseInt(config.port, 10) : null;
+    node.port = config.port ? parseInt(config.port, 10) : 1;
     node.confirmed = config.confirmed || false
     node.schedule = config.schedule || "replace"
 
