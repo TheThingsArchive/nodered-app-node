@@ -1,99 +1,99 @@
 [
   {
-    "id": "a6778c12.cb6e4",
-    "type": "ttn device",
+    "id": "a459ffa2.37ac7",
+    "type": "ttn event",
     "z": "fee24d26.485d6",
     "name": "",
     "dev_id": "",
     "event": "#",
     "x": 140,
-    "y": 120,
+    "y": 140,
     "wires": [
       [
-        "f994084d.3c72c8"
+        "2c460b92.9c2464"
       ]
     ]
   },
   {
-    "id": "4fbb8778.00588",
-    "type": "ttn message",
+    "id": "22f7bbe0.b4ed4c",
+    "type": "ttn uplink",
     "z": "fee24d26.485d6",
     "name": "",
     "dev_id": "",
     "field": "",
-    "x": 150,
-    "y": 180,
+    "x": 140,
+    "y": 200,
     "wires": [
       [
-        "3384eda4.27cdf2",
-        "9093e98e.913da8"
+        "590e4f55.8ee09",
+        "f3afc111.c00c6"
       ]
     ]
   },
   {
-    "id": "9093e98e.913da8",
-    "type": "function",
-    "z": "fee24d26.485d6",
-    "name": "function",
-    "func": "\nreturn {\n    dev_id: msg.dev_id,\n    port: msg.port,\n    schedule: \"replace\",\n    confirmed: false,\n    payload: {\n        led: !msg.led,\n    }\n}",
-    "outputs": 1,
-    "noerr": 0,
-    "x": 340,
-    "y": 240,
-    "wires": [
-      [
-        "108283ac.bbf61c",
-        "cf74ac5b.14b91"
-      ]
-    ]
-  },
-  {
-    "id": "f994084d.3c72c8",
-    "type": "debug",
-    "z": "fee24d26.485d6",
-    "name": "device",
-    "active": true,
-    "console": "false",
-    "complete": "true",
-    "x": 510,
-    "y": 120,
-    "wires": []
-  },
-  {
-    "id": "3384eda4.27cdf2",
-    "type": "debug",
-    "z": "fee24d26.485d6",
-    "name": "message",
-    "active": true,
-    "console": "false",
-    "complete": "true",
-    "x": 520,
-    "y": 180,
-    "wires": []
-  },
-  {
-    "id": "108283ac.bbf61c",
-    "type": "debug",
-    "z": "fee24d26.485d6",
-    "name": "function",
-    "active": true,
-    "console": "false",
-    "complete": "true",
-    "x": 520,
-    "y": 240,
-    "wires": []
-  },
-  {
-    "id": "cf74ac5b.14b91",
-    "type": "ttn send",
+    "id": "2ca1dd78.8b5702",
+    "type": "ttn downlink",
     "z": "fee24d26.485d6",
     "name": "",
     "dev_id": "",
     "port": "",
     "confirmed": false,
     "schedule": "replace",
-    "x": 520,
-    "y": 300,
+    "x": 490,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "590e4f55.8ee09",
+    "type": "function",
+    "z": "fee24d26.485d6",
+    "name": "function",
+    "func": "return {\n    port: msg.port,\n    schedule: \"replace\",\n    confirmed: false,\n    payload: {\n        led: !msg.led,\n    },\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 300,
+    "y": 260,
+    "wires": [
+      [
+        "9da37420.1ef84",
+        "2ca1dd78.8b5702"
+      ]
+    ]
+  },
+  {
+    "id": "2c460b92.9c2464",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "event",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 470,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "f3afc111.c00c6",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "uplink",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 470,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "9da37420.1ef84",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "function",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 480,
+    "y": 260,
     "wires": []
   }
 ]
