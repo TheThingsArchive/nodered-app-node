@@ -2,7 +2,7 @@ var initNode = require('../lib/init');
 
 module.exports = function(RED) {
 
-  function TTNDevice(config) {
+  function TTNEvent(config) {
     var node = this;
 
     RED.nodes.createNode(node, config);
@@ -31,5 +31,5 @@ module.exports = function(RED) {
     });
   }
 
-  RED.nodes.registerType("ttn device", TTNDevice);
+  RED.nodes.registerType("ttn event", TTNEvent);
 };

@@ -2,7 +2,7 @@ var initNode = require('../lib/init');
 
 module.exports = function(RED) {
 
-  function TTNMessage(config) {
+  function TTNUplink(config) {
     var node = this;
 
     RED.nodes.createNode(node, config);
@@ -26,5 +26,5 @@ module.exports = function(RED) {
     });
   }
 
-  RED.nodes.registerType("ttn message", TTNMessage);
+  RED.nodes.registerType("ttn uplink", TTNUplink);
 };

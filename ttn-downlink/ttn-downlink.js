@@ -2,7 +2,7 @@ var initNode = require('../lib/init');
 
 module.exports = function(RED) {
 
-  function TTNSend(config) {
+  function TTNDownlink(config) {
     var node = this;
 
     RED.nodes.createNode(node, config);
@@ -36,5 +36,5 @@ module.exports = function(RED) {
     });
   }
 
-  RED.nodes.registerType("ttn send", TTNSend);
+  RED.nodes.registerType("ttn downlink", TTNDownlink);
 };
