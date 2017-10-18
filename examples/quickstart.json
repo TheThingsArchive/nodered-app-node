@@ -1,91 +1,99 @@
-[{
-  "id": "7529c13.b349c4",
-  "type": "ttn message",
-  "z": "584e92e6.157934",
-  "name": "",
-  "app": "eef984ef.20e31",
-  "dev_id": "",
-  "field": "led",
-  "x": 204.5,
-  "y": 311,
-  "wires": [
-    ["86319536.b6c93", "f1fa08f7.de8d2"]
-  ]
-}, {
-  "id": "8f210c11.c37c1",
-  "type": "debug",
-  "z": "584e92e6.157934",
-  "name": "device",
-  "active": true,
-  "console": "false",
-  "complete": "true",
-  "x": 459.5,
-  "y": 223,
-  "wires": []
-}, {
-  "id": "72cc73fd.d253dc",
-  "type": "ttn send",
-  "z": "584e92e6.157934",
-  "name": "",
-  "app": "eef984ef.20e31",
-  "dev_id": "",
-  "port": "",
-  "x": 498.5,
-  "y": 485,
-  "wires": []
-}, {
-  "id": "86319536.b6c93",
-  "type": "function",
-  "z": "584e92e6.157934",
-  "name": "function",
-  "func": "return {\n    dev_id: msg.dev_id,\n    port: msg.port,\n    payload: {\n        led: !msg.payload\n    }\n};",
-  "outputs": 1,
-  "noerr": 0,
-  "x": 346.5,
-  "y": 415,
-  "wires": [
-    ["72cc73fd.d253dc", "b550feda.dadbe"]
-  ]
-}, {
-  "id": "27847c83.61b23c",
-  "type": "ttn device",
-  "z": "584e92e6.157934",
-  "name": "",
-  "app": "eef984ef.20e31",
-  "dev_id": "",
-  "event": "activations",
-  "x": 197.5,
-  "y": 223,
-  "wires": [
-    ["8f210c11.c37c1"]
-  ]
-}, {
-  "id": "f1fa08f7.de8d2",
-  "type": "debug",
-  "z": "584e92e6.157934",
-  "name": "message",
-  "active": true,
-  "console": "false",
-  "complete": "true",
-  "x": 455.5,
-  "y": 317,
-  "wires": []
-}, {
-  "id": "b550feda.dadbe",
-  "type": "debug",
-  "z": "584e92e6.157934",
-  "name": "function",
-  "active": true,
-  "console": "false",
-  "complete": "true",
-  "x": 499.5,
-  "y": 402,
-  "wires": []
-}, {
-  "id": "eef984ef.20e31",
-  "type": "ttn app",
-  "z": "584e92e6.157934",
-  "appId": "",
-  "accessKey": "",
-  "region": ""
-}]
+[
+  {
+    "id": "a6778c12.cb6e4",
+    "type": "ttn device",
+    "z": "fee24d26.485d6",
+    "name": "",
+    "dev_id": "",
+    "event": "#",
+    "x": 140,
+    "y": 120,
+    "wires": [
+      [
+        "f994084d.3c72c8"
+      ]
+    ]
+  },
+  {
+    "id": "4fbb8778.00588",
+    "type": "ttn message",
+    "z": "fee24d26.485d6",
+    "name": "",
+    "dev_id": "",
+    "field": "",
+    "x": 150,
+    "y": 180,
+    "wires": [
+      [
+        "3384eda4.27cdf2",
+        "9093e98e.913da8"
+      ]
+    ]
+  },
+  {
+    "id": "9093e98e.913da8",
+    "type": "function",
+    "z": "fee24d26.485d6",
+    "name": "function",
+    "func": "\nreturn {\n    dev_id: msg.dev_id,\n    port: msg.port,\n    schedule: \"replace\",\n    confirmed: false,\n    payload: {\n        led: !msg.led,\n    }\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 340,
+    "y": 240,
+    "wires": [
+      [
+        "108283ac.bbf61c",
+        "cf74ac5b.14b91"
+      ]
+    ]
+  },
+  {
+    "id": "f994084d.3c72c8",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "device",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 510,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "3384eda4.27cdf2",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "message",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 520,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "108283ac.bbf61c",
+    "type": "debug",
+    "z": "fee24d26.485d6",
+    "name": "function",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 520,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "cf74ac5b.14b91",
+    "type": "ttn send",
+    "z": "fee24d26.485d6",
+    "name": "",
+    "dev_id": "",
+    "port": "",
+    "confirmed": false,
+    "schedule": "replace",
+    "x": 520,
+    "y": 300,
+    "wires": []
+  }
+]
