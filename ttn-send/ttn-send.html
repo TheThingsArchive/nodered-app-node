@@ -16,6 +16,10 @@
     <input type="text" id="node-input-port">
   </div>
   <div class="form-row">
+    <label for="node-input-confirmed"><i class="fa fa-wrench"></i> Confirmed</label>
+    <input type="checkbox" id="node-input-confirmed">
+  </div>
+  <div class="form-row">
     <label for="node-input-schedule"><i class="fa fa-wrench"></i> Schedule</label>
     <select id="node-input-schedule">
       <option value="replace">replace</option>
@@ -33,6 +37,8 @@
     <li><code>dev_id</code>, if set, is used as the device ID instead of the one configured in the node.</li>
     <li><code>port</code>, if set, is used as the device port instead of the one configured in the node.</li>
     <li><code>payload</code> is sent to the device. Must be a <a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a>, <a href="https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array" target="_blank">Array of bytes</a> or an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a> if the application is configured with an encoder payload function.</li>
+    <li><code>confirmed</code>, if selected, makes the messages confirmed.</li>
+    <li><code>schedule</code>, sets the scheduling messages should have. <b>replace</b> replaces the last scheduled downlink, <b>first</b> puts the downlink message in front of the queue, <b>last</b> puts the downlink message in the back of the queue.</li>
   </ul>
 </script>
 
@@ -59,6 +65,10 @@
         value: '',
         type: 'number',
         required: false
+      },
+      confirmed: {
+        value: false,
+        type: 'bool',
       },
       schedule: {
         value: 'replace',

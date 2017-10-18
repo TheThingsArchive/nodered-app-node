@@ -9,6 +9,8 @@ module.exports = function(RED) {
 
     node.dev_id = config.dev_id;
     node.port = config.port ? parseInt(config.port, 10) : null;
+    node.confirmed = config.confirmed || false
+    node.schedule = config.schedule || "replace"
 
     var client = initNode(RED, node, config);
 
@@ -25,7 +27,11 @@ module.exports = function(RED) {
       }
 
       client.then(function (client) {
-        client.send(dev_id, msg.payload, msg.port || node.port, msg.confirmed || false, msg.schedule || config.schedule || "replace");
+        const port = msg.port || node.port
+        const confirmed = ("confirmed" in msg) ? msg.confirmed : node.confirmed
+        const schedule = msg.schedule || node.schedule
+
+        client.send(dev_id, msg.payload, port, confirmed, schedule);
       })
     });
   }
