@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
     RED.nodes.createNode(node, config);
 
-    node.dev_id = config.dev_id;
+    node.dev_id = config.dev_id || "+";
     node.event = config.event;
 
     if (!node.event) {

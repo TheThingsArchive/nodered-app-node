@@ -20,6 +20,9 @@ module.exports = function(RED) {
 
     this.on('input', function(msg) {
       var dev_id = msg.dev_id || node.dev_id;
+      var port = msg.port || node.port || null;
+      var confirmed = ("confirmed" in msg) ? msg.confirmed : node.confirmed;
+      var schedule = msg.schedule || node.schedule || "replace";
 
       if (!dev_id) {
         node.error('No dev_id set');
@@ -27,10 +30,6 @@ module.exports = function(RED) {
       }
 
       client.then(function (client) {
-        const port = msg.port || node.port || null
-        const confirmed = ("confirmed" in msg) ? msg.confirmed : node.confirmed
-        const schedule = msg.schedule || node.schedule || "replace"
-
         client.send(dev_id, msg.payload, port, confirmed, schedule);
       })
     });
