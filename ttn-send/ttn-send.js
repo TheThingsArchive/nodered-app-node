@@ -8,9 +8,9 @@ module.exports = function(RED) {
     RED.nodes.createNode(node, config);
 
     node.dev_id = config.dev_id;
-    node.port = config.port ? parseInt(config.port, 10) : 1;
-    node.confirmed = config.confirmed || false
-    node.schedule = config.schedule || "replace"
+    node.port = config.port ? parseInt(config.port, 10) : null;
+    node.confirmed = config.confirmed || false;
+    node.schedule = config.schedule || "replace";
 
     var client = initNode(RED, node, config);
 
@@ -27,9 +27,9 @@ module.exports = function(RED) {
       }
 
       client.then(function (client) {
-        const port = msg.port || node.port
+        const port = msg.port || node.port || null
         const confirmed = ("confirmed" in msg) ? msg.confirmed : node.confirmed
-        const schedule = msg.schedule || node.schedule
+        const schedule = msg.schedule || node.schedule || "replace"
 
         client.send(dev_id, msg.payload, port, confirmed, schedule);
       })
