@@ -1,0 +1,381 @@
+env:
+  browser: true
+  node: true
+  es6: true
+
+plugins:
+  - html
+
+globals:
+  module: false
+  RED: true
+
+# configure rules
+rules:
+  # Handles destructuring arrays with flow type in function parameters
+  array-bracket-spacing:
+    - error
+    - always
+    - arraysInArrays: false
+      objectsInArrays: false
+
+  # Enforce return statements in callbacks of array’s methods
+  array-callback-return:
+    - error
+
+  # Consistent arrow bodies
+  arrow-body-style:
+    - error
+    - never
+
+  # Guard against awaiting async functions inside of a loop
+  no-await-in-loop:
+    - warn
+
+  # Force spacing in single line blocks
+  block-spacing:
+    - error
+    - always
+
+  # Force the one true brace style
+  brace-style:
+    - error
+    - 1tbs
+
+  # Do not force camel-case
+  camelcase:
+    - off
+
+  # Force dangling commas
+  comma-dangle:
+    - error
+    - always-multiline
+
+  # Enforce spacing and after comma
+  comma-spacing:
+    - error
+
+  # Enforce one true comma style
+  comma-style:
+    - error
+    - last
+
+  # Require or disallow padding inside computed properties
+  computed-property-spacing:
+    - error
+
+  # Specify curly brace conventions for all control statements
+  curly:
+    - error
+    - all
+
+  # Enforce consistent newlines before or after dots
+  dot-location:
+    - error
+    - property
+
+  # Encourage use of dot notation whenever possible
+  dot-notation:
+    - error
+
+  # Require use of === and !==
+  eqeqeq:
+    - error
+
+  # Force consistent spacing when calling functions
+  func-call-spacing:
+    - error
+    - never
+
+  # Force space around generator stars
+  generator-star-spacing:
+    - error
+    - both
+
+  # Consisten indentation
+  indent:
+    - error
+    - 2
+    - SwitchCase: 0
+      MemberExpression: 1
+
+  # Consistent object key spacing
+  key-spacing:
+    - error
+    - beforeColon: false
+      afterColon: true
+      mode: strict
+
+  # Enforce spacing before and after keywords
+  keyword-spacing:
+    - error
+
+  # Disallow alert
+  no-alert:
+    - error
+
+  # Disallow if (true) and if (false)
+  no-constant-condition:
+    - error
+
+  # Disallow duplicate fn arguments
+  no-dupe-args:
+    - error
+
+  # Disallow duplicate object keys
+  no-dupe-keys:
+    - error
+
+  # Disallow duplicate case statements
+  no-duplicate-case:
+    - error
+
+  # Prevent duplicate imports
+  no-duplicate-imports:
+    - error
+
+  # Simplify if-else when possible
+  no-else-return:
+    - error
+
+  # Disallow eval
+  no-eval:
+    - error
+
+  # Avoid unnecessary binds
+  no-extra-bind:
+    - error
+
+  # Disallow faulty function assignments
+  no-func-assign:
+    - error
+
+  # Disallow assigning to globals
+  no-global-assign:
+    - error
+
+  # Avoid implied eval
+  no-implied-eval:
+    - error
+
+  # Avoid implicit globals
+  no-implicit-globals:
+    - error
+
+  # Disallow decalring functions inside nested block
+  no-inner-declarations:
+    - warn
+
+  # Prevent invalid regexes
+  no-invalid-regexp:
+    - error
+
+  # Prevent spacing characters other than space
+  no-irregular-whitespace:
+    - error
+
+  # Avoid lonely ifs in else blocks
+  no-lonely-if:
+    - error
+
+  # Prevent !a in b instead of !(a in b) bug
+  no-negated-in-lhs:
+    -  error
+
+  # Avoid creating wrappers for String, Boolean, ...
+  no-new-wrappers:
+    - error
+
+  # Disallow mixed spaces and tabs for indentation
+  no-mixed-spaces-and-tabs:
+    - error
+
+  # Disallow use of multiple spaces
+  no-multi-spaces:
+    - error
+
+  # Prevent the accidental calling of global objects as functions
+  no-obj-calls:
+    - error
+
+  # Disallow reassignment of function parameters
+  no-param-reassign:
+    - error
+
+  # Forbid __proto__
+  no-proto:
+    - error
+
+  # Forbid x === x
+  no-self-compare:
+    - error
+
+  # Disallow assignments where both sides are exactly the same
+  no-self-assign:
+    - error
+
+  # disallow space between function identifier and application
+  no-spaced-func:
+    - error
+
+  # Disallow [,,]
+  no-sparse-arrays:
+    - error
+
+  # disallow trailing whitespace at the end of lines
+  no-trailing-spaces:
+    - error
+
+  # Avoid unnecessary ternaries
+  no-unneeded-ternary:
+    - error
+
+  # Disallow unreachable code
+  no-unreachable:
+    - error
+
+  # Disallow unsafe negations
+  no-unsafe-negation:
+    - error
+
+  no-unused-expressions:
+    - error
+
+  # Forbid unused variables
+  no-unused-vars:
+    - error
+    - args: none
+      caughtErrors: none
+      ignoreDestructuredVarsWithRest: true
+
+  no-useless-call:
+    - error
+
+  no-useless-computed-key:
+    - error
+
+  no-useless-constructor:
+    - error
+
+  no-useless-escape:
+    - error
+
+  no-useless-rename:
+    - error
+
+  # Disallow use of undefined
+  no-undefined:
+    - off
+
+  # Disallow use of undefined variables
+  no-undef:
+    - error
+
+  # Disallow use of variables before they are defined
+  no-use-before-define:
+    - warn
+    - functions: false
+
+  # Disallow whit blocks
+  no-with:
+    - error
+
+  # Disallow whitespace before object properties
+  no-whitespace-before-property:
+    - error
+
+  # Consistent object newlines
+  object-curly-newline:
+    - error
+    - multiline: true
+      consistent: true
+
+  # Allow only one declaration per line
+  one-var-declaration-per-line:
+    - error
+
+  # Force operator shorthands when possible
+  operator-assignment:
+    - error
+    - always
+
+  # Enforce operators to be placed before or after line breaks
+  operator-linebreak:
+    - error
+    - before
+    - overrides:
+       =: after
+
+  # Suggest using the rest parameters instead of arguments
+  prefer-rest-params:
+    - error
+
+  # Suggest using the spread operator instead of .apply()
+  prefer-spread:
+    - error
+
+  # Avoid useless string concatenation
+  no-useless-concat:
+    - error
+
+  # Require quotes around object literal property names
+  quote-props:
+    - error
+    - as-needed
+    - keywords: true
+
+  # Specify whether backticks, double or single quotes should be used
+  quotes:
+    - error
+    - double
+    - avoidEscape: true
+      allowTemplateLiterals: true
+
+  # Consistent spacing of the rest operator
+  rest-spread-spacing:
+    - error
+    - never
+
+  # Require or disallow use of semicolons instead of ASI
+  semi:
+    - error
+    - never
+
+  # Require or disallow a space before blocks
+  space-before-blocks:
+    - error
+
+  # Require or disallow a space before function opening parenthesis
+  space-before-function-paren:
+    - error
+
+  space-infix-ops:
+    - error
+
+  space-unary-ops:
+    - error
+    - nonwords: false
+      words: true
+
+  # Require or disallow a space immediately following the // or /* in a comment
+  spaced-comment:
+    - error
+
+  # Consistent spacing in template string
+  template-curly-spacing:
+    - error
+
+  # Never compare to NaN
+  use-isnan:
+    - error
+
+  # Ensure string compared to typeof is valid
+  valid-typeof:
+    - error
+
+  # enforce spacing around the * in yield* expressions
+  yield-star-spacing:
+    - error
+    - both
+
+# vim: ft=yaml

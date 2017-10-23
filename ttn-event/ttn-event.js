@@ -1,35 +1,34 @@
-var initNode = require('../lib/init');
+"use strict"
 
-module.exports = function(RED) {
+var init = require("../lib/init")
 
-  function TTNEvent(config) {
-    var node = this;
+module.exports = function (RED) {
+  RED.nodes.registerType("ttn event", function (config) {
+    var node = this
 
-    RED.nodes.createNode(node, config);
+    RED.nodes.createNode(node, config)
 
-    node.dev_id = config.dev_id || "+";
-    node.event = config.event;
+    node.dev_id = config.dev_id || "+"
+    node.event = config.event
 
     if (!node.event) {
-      node.error('No event set');
-      return;
+      node.error("No event set")
+      return
     }
 
-    var client = initNode(RED, node, config);
+    var client = init(RED, node, config)
 
     if (!client) {
-      return;
+      return
     }
 
     client.then(function (client) {
-      client.on('events', node.dev_id, node.event, function(dev_id, data) {
+      client.on("events", node.dev_id, node.event, function (dev_id, data) {
         node.send([{
           dev_id: dev_id,
-          payload: data
-        }]);
-      });
-    });
-  }
-
-  RED.nodes.registerType("ttn event", TTNEvent);
-};
+          payload: data,
+        }])
+      })
+    })
+  })
+}

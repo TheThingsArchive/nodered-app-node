@@ -14,10 +14,15 @@
     "url": "https://github.com/TheThingsNetwork/nodered-app-node/issues"
   },
   "homepage": "https://github.com/TheThingsNetwork/nodered-app-node#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-ttn": "^1.3.2",
+    "eslint-plugin-html": "^3.2.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "git push --follow-tags"
+    "push": "git push --follow-tags",
+    "lint": "eslint . --ext .js,.html"
   },
   "keywords": [
     "node-red",
