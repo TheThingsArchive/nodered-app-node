@@ -10,28 +10,31 @@ module.exports = function(RED) {
 
     node.appId = config.appId;
     node.accessKey = config.accessKey;
-    node.region = config.region;
+    node.discovery = config.discovery;
 
-    if (!node.appId || !node.accessKey || !node.region) {
-      node.error('No appId, accessKey or region set');
+    if (!node.appId || !node.accessKey || !node.discovery) {
+      node.error('No appId, accessKey or discovery address set');
       return;
     }
 
-    node.client = new ttn.Client(node.region, node.appId, node.accessKey);
+    node.client =
+      ttn.data(node.appId, node.accessKey, {
+        address: node.discovery,
+      })
+      .then(function(client) {
+        node.log('Connected to TTN application ' + node.appId);
 
-    node.client.on('connect', function() {
-      node.log('Connected to TTN application ' + node.appId);
-    });
+        node.on('close', function(done) {
+          node.log('Closing connection to TTN application ' + node.appId);
+          client.close(true, done);
+        });
 
-    node.client.on('error', function(err) {
-      node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
-    });
-
-    node.on('close', function(done) {
-      node.log('Closing connection to TTN application ' + node.appId);
-      node.client.end();
-      done();
-    });
+        return client
+      })
+      .catch(function(err) {
+        node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
+        throw err
+      });
   }
 
   RED.nodes.registerType('ttn app', TTNConfig);
