@@ -16,10 +16,11 @@ See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-
 
 ## Documentation
 
-See [The Things Network Documentation](https://www.thethingsnetwork.org/docs/applications/nodered/).
+Go trough the [quickstart](docs/quickstart.md) to get started.
 
 ## Examples
 
 See [examples/quickstart.json](examples/quickstart.json).
 
 [![Quick Start](examples/quickstart.png)](examples/quickstart.json)
+
