@@ -1,41 +1,36 @@
-var ttn = require('ttn');
+"use strict"
 
-module.exports = function(RED) {
-  "use strict";
+var ttn = require("ttn")
 
-  function TTNConfig(config) {
-    var node = this;
+module.exports = function (RED) {
+  RED.nodes.registerType("ttn app", function (config) {
+    var node = this
 
-    RED.nodes.createNode(node, config);
+    RED.nodes.createNode(node, config)
 
-    node.appId = config.appId;
-    node.accessKey = config.accessKey;
-    node.discovery = config.discovery;
+    node.appId = config.appId
+    node.accessKey = config.accessKey
+    node.discovery = config.discovery
 
     if (!node.appId || !node.accessKey || !node.discovery) {
-      node.error('No appId, accessKey or discovery address set');
-      return;
+      node.error("No appId, accessKey or discovery address set")
+      return
     }
 
-    node.client =
-      ttn.data(node.appId, node.accessKey, {
-        address: node.discovery,
-      })
-      .then(function(client) {
-        node.log('Connected to TTN application ' + node.appId);
+    node.client = ttn.data(node.appId, node.accessKey, { address: node.discovery })
+      .then(function (client) {
+        node.log("Connected to TTN application " + node.appId)
 
-        node.on('close', function(done) {
-          node.log('Closing connection to TTN application ' + node.appId);
-          client.close(true, done);
-        });
+        node.on("close", function (done) {
+          node.log("Closing connection to TTN application " + node.appId)
+          client.close(true, done)
+        })
 
         return client
       })
-      .catch(function(err) {
-        node.error('Error on connection for TTN application ' + node.appId + ': ' + err);
+      .catch(function (err) {
+        node.error("Error on connection for TTN application " + node.appId + ": " + err)
         throw err
-      });
-  }
-
-  RED.nodes.registerType('ttn app', TTNConfig);
-};
+      })
+  })
+}

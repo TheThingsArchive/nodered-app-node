@@ -24,27 +24,27 @@
 </script>
 
 <script type="text/javascript">
-  RED.nodes.registerType('ttn app', {
-    category: 'config',
+  RED.nodes.registerType("ttn app", {
+    category: "config",
     defaults: {
       appId: {
-        value: '',
-        type: 'string',
+        value: "",
+        type: "string",
         required: true,
       },
       accessKey: {
-        value: '',
-        type: 'password',
+        value: "",
+        type: "password",
         required: true,
       },
       discovery: {
-        value: 'discovery.thethingsnetwork.org:1900',
-        type: 'string',
+        value: "discovery.thethingsnetwork.org:1900",
+        type: "string",
         required: true,
       },
     },
-    label: function() {
-      return this.appId || 'ttn';
+    label: function () {
+      return this.appId || "ttn"
     },
-  });
+  })
 </script>
