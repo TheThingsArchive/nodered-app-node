@@ -65,7 +65,7 @@ You can now reuse this application configuration in all TTN nodes.
 
 ### Receive uplink messages
 
-Messages sent by devices on the application can be recieved via the *ttn uplink*
+Messages sent by devices on the application can be received via the *ttn uplink*
 node.
 
 1. Drag a *ttn-uplink* node to from the input category of the toolbox to the
