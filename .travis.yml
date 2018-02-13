@@ -1,0 +1,8 @@
+deploy:
+  provider: npm
+  email: johan@stokking.nl
+  api_key:
+    secure: rIVs9J6FM0XP7xhBPqfJLchznudrm8B2WJybmVdhey9abktPKlIaBFpcKq0Twzt9vp23WgZ7lgJ3fVig/zS6b8K9qO8YBlrszhRUkdD1SMPRhInJTtHNmdqkUEkwvc+FKDmsgErxytHBNT5nh6UG77vA11/pgZQQ2xgvPdRVLjpffZWKj3W57oesitGrZZ57tGippsz3QHTtuvYx4F70+eed/7AnJoKhY4ltLjhoA8BbMerHaz4stPXIEWqTR7MCZ+hyDOBHdNpZRWYy3KIfx2j/K+WogGjloJuUjrwM3f/PT7wnW3edukA6n9cgbHc8L6IbaTi+UmxI4lDjt45Ou0VBJeo2uL5eRJ4p+5e8jktfnDvALpV84Klai6c8Bb+D3moTjuUQ+HAviaidukof24odFqkIgDnILY4AKYEJN+HHt4XeDg9vGc4vPm7HsJ9Y4CoCeO4ScFFkaXIlLKoeNqJQcJYYQHv8Xx7HMzul5o6Roq1FUiWI9JlFPco1XYL2165iV+UvoZmGiBx8IfbwAcMsH4kVg7nqOPYuR12n9vyFyZ6f8ZCL7c5A1gNt6WrpDi0otHEGsWFohVDQL4FMXkKWxNwEeZ3/XewxQ7nQ/USNjtSWaHXJeMzqjcvKNh62xuuJ7991c1s3spyWiCMypPDE+1Se6fWjpwxEx4m8IN0=
+  on:
+    tags: true
+    repo: TheThingsNetwork/nodered-app-node
