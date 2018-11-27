@@ -31,6 +31,7 @@ listening to device uplinks and events, as well as sending downlink in response.
     ```bash
     29 Aug 11:13:01 - [info] Server now running at http://127.0.0.1:1880/
     ```
+    _(If you see a line like '\[warn\] \[node-red-contrib-ttn/ttn-app\]' then visit the Issues chapter.)_
 
     ![Node-RED with ttn node](images/node-red-with-nodes.png)
 
@@ -45,6 +46,7 @@ All The Things Network nodes can share the same application configuration.
 
 2. In the *App* field either select an existing app or select *Add new ttn
    app...* and click the `✏️` button.
+   _(If you do not see the `✏️` button then visit the Issues chapter.)_
 
   ![Node-RED Edit](images/edit2.png)
 
@@ -243,3 +245,26 @@ we use as input for the **ttn downlink** node is correct.
 👏 You now know how to receive events and messages in Node-RED as well as how to
 trigger actions on that, for example by sending a message in response. Now go
 build something awesome and share it on [labs](https://www.thethingsnetwork.org/labs/)!
+
+### Issues
+
+Here is a list of common issues users have reported with possible solutions.
+
+#### Cannot configure Application in a TTN node
+
+In some installations it is not possible to add an application or edit the App field. If this is the case then check the startup messages of Node-RED for any warnings or errors about the ttn-app. 
+
+Other symptoms are a warning icon and the text `[object Object]` in the manage palette dialog of Node-RED below node-red-contrib-ttn.
+
+#### Startup message: libstdc++.so.6: version \`GLIBCXX_3.x.xx' not found
+
+Error seen on Raspbian Jessie:
+```
+[warn] [node-red-contrib-ttn/ttn-app] Error: /usr/lib/arm-linux-gnueabihf/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /home/pi/.node-red/node_modules/grpc/src/node/extension_binary/node-v48-linux-arm-glibc/grpc_node.node)
+```
+Npm has downloaded incompatible binaries for your system. The solution is to rebuild the affected dependencies from source using npm. For grpc you can use the following commands:
+```
+cd ~/.node-red
+npm rebuild --build-from-source=grpc
+```
+If this fails then try `npm rebuild` without any package. And if that fails then there is likely an issue with the used Node or Node-RED version.
