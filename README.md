@@ -10,13 +10,15 @@ cd $HOME/.node-red
 npm install node-red-contrib-ttn
 ```
 
+Make sure you have `git` installed.
+
 See the [Node-RED Documentation / Adding Nodes](http://nodered.org/docs/getting-started/adding-nodes) for more options.
 
 > **NOTE:** For the deprecated staging environment use version 1.0.0: `npm i node-red-contrib-ttn@1.0.0`.
 
 ## Documentation
 
-Go trough the [quickstart](docs/quickstart.md) to get started.
+Go through the [quickstart](docs/quickstart.md) to get started.
 
 ## Examples
 
